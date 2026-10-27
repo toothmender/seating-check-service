@@ -1,0 +1,22 @@
+# Render Blueprint: deploys this folder's Dockerfile as one web service.
+# Render asks for the values marked sync: false when you create the Blueprint; they are stored as secrets, not in the image.
+services:
+  - type: web
+    name: seating-check
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: starter
+    healthCheckPath: /healthz
+    autoDeploy: true
+    envVars:
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      # Shared login for the whole site. Leave both set until SSO is in front of the service.
+      - key: ACCESS_USER
+        sync: false
+      - key: ACCESS_PASSWORD
+        sync: false
+      - key: RATE_LIMIT_PER_MIN
+        value: "20"
+      - key: MAX_OUTPUT_TOKENS
+        value: "1800"
