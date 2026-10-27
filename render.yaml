@@ -11,7 +11,17 @@ services:
     envVars:
       - key: ANTHROPIC_API_KEY
         sync: false
-      # Shared login for the whole site. Leave both set until SSO is in front of the service.
+      # Google sign-in, limited to @meetdandy.com. Takes priority over the shared login below
+      # once GOOGLE_CLIENT_ID is set. Set the client ID and secret in Render's Environment page.
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false
+      - key: ALLOWED_EMAIL_DOMAIN
+        value: meetdandy.com
+      - key: SESSION_SECRET
+        generateValue: true
+      # Shared login: used only while Google sign-in isn't configured.
       - key: ACCESS_USER
         sync: false
       - key: ACCESS_PASSWORD

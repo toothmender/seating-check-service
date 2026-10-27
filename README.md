@@ -26,6 +26,16 @@ docker run -p 8080:8080 --env-file .env seating-check
 ```
 Any container host works (Cloud Run, ECS, Fly, Kubernetes). Copy `.env.example` to `.env` and fill it in. Store the key in your host's secret manager, not in the image.
 
+## Sign-in (Google, @meetdandy.com only)
+
+When `GOOGLE_CLIENT_ID` is set, every page and API route requires signing in with a Google account on `ALLOWED_EMAIL_DOMAIN` (default in `render.yaml`: `meetdandy.com`). Only `/healthz` stays open. Code is in `server/googleauth.js`; there are no extra dependencies.
+
+- Settings: `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `ALLOWED_EMAIL_DOMAIN`, `SESSION_SECRET` (any long random string; Render generates it). Optional: `ALLOWED_EMAILS`, a comma-separated list of extra addresses outside the domain.
+- Google Cloud: create an OAuth client of type "Web application" with these redirect URIs: `https://seating-check.onrender.com/auth/callback` and `https://app.seatingcheck.com/auth/callback`. An "Internal" consent screen in the meetdandy.com Workspace is best; the server checks the domain either way.
+- The server checks issuer, audience, expiry, nonce, `email_verified` and the domain before creating a session. Sessions are HMAC-signed, HttpOnly, Secure cookies that last 12 hours. Sign out at `/auth/logout`.
+- If `GOOGLE_CLIENT_ID` is not set, the shared `ACCESS_USER`/`ACCESS_PASSWORD` login applies as before.
+- `npm test` runs `authtest.js` against a stubbed Google token endpoint.
+
 ## Redaction step (runs before every review)
 
 Every image goes through an in-browser redaction screen before it is read for the seating check, whether it arrives by picker, drag-and-drop or paste. Nothing on that screen talks to the server.
