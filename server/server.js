@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 import crypto from "node:crypto";
 import { KNOWLEDGE, LOCATE_PROMPT } from "./prompts.js";
 import { parseJson } from "./jsonrepair.js";
+import { createGoogleAuth } from "./googleauth.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -19,6 +20,12 @@ const {
   ACCESS_PASSWORD = "",
   RATE_LIMIT_PER_MIN = "20",
   MAX_OUTPUT_TOKENS = "1800",
+  GOOGLE_CLIENT_ID = "",
+  GOOGLE_CLIENT_SECRET = "",
+  ALLOWED_EMAIL_DOMAIN = "",
+  ALLOWED_EMAILS = "",
+  SESSION_SECRET = "",
+  GOOGLE_TOKEN_URL = "",
 } = process.env;
 
 if (!ANTHROPIC_API_KEY) {
@@ -47,8 +54,26 @@ app.use(
   })
 );
 
-// Optional shared login. In production prefer SSO / an identity-aware proxy in front of this service.
-if (ACCESS_PASSWORD) {
+// Sign-in. Google sign-in limited to one email domain takes priority when it's configured;
+// otherwise the optional shared login applies.
+if (GOOGLE_CLIENT_ID) {
+  if (!GOOGLE_CLIENT_SECRET || !ALLOWED_EMAIL_DOMAIN) {
+    console.error("GOOGLE_CLIENT_ID is set but GOOGLE_CLIENT_SECRET or ALLOWED_EMAIL_DOMAIN is missing. Refusing to start.");
+    process.exit(1);
+  }
+  const google = createGoogleAuth({
+    clientId: GOOGLE_CLIENT_ID,
+    clientSecret: GOOGLE_CLIENT_SECRET,
+    domain: ALLOWED_EMAIL_DOMAIN,
+    sessionSecret: SESSION_SECRET,
+    tokenUrl: GOOGLE_TOKEN_URL || undefined,
+    allowEmails: ALLOWED_EMAILS.split(","),
+  });
+  app.get("/auth/login", google.login);
+  app.get("/auth/callback", google.callback);
+  app.get("/auth/logout", google.logout);
+  app.use(google.guard);
+} else if (ACCESS_PASSWORD) {
   app.use((req, res, next) => {
     if (req.path === "/healthz") return next();
     const h = req.headers.authorization || "";
