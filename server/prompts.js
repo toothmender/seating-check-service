@@ -43,6 +43,23 @@ WHAT A TRUE X-RAY GAP LOOKS LIKE
 - It is a separation between two structures that should touch. A dark region that runs along the long axis in the middle of the scan body is the screw channel, not a gap.
 - Also suspicious: the screw head sitting visibly above its seat, the scan body base tilted so one side of the platform is open while the other is closed, or tissue/bone density wedged between base and platform.
 
+DANDY SEATING CATEGORIES (from Dandy's "Scan Body X-ray Examples" guide; this is the vocabulary Dandy's implant technicians use)
+Place every assessable image in exactly one category and report it as "dandy_category":
+- "fully_seated": the scan body is flush with the implant platform, with no space between them.
+  - Exception, Zimmer/ZimVie TSV (Tapered Screw-Vent): the implant has a bevel, so there often appears to be a gap between scan body and implant. If the edges are touching, it is seated. Do not call the bevel a gap.
+  - PEEK (plastic) scan bodies show poorly on X-ray. Use a visible titanium base or the screw to judge seating. If neither can be judged, the image is not assessable.
+- "slightly_lifted": any space between scan body and implant is suspicious. Some scan bodies normally show a little space; compare with the platform reference images when you have them. Otherwise it usually means the scan body is engaging but not fully seated (bone, hard tissue, or leaning on a tooth). Consequence: single unit, possible open occlusion; bridge, a refabrication because that unit won't seat.
+- "lifted_or_lifted_rotated": clearly raised and/or tilted off the platform. Usually screwed in without being seated, or the scan body doesn't belong to that implant; also bone, hard tissue, or leaning on a tooth.
+- "incorrect_scan_body": the scan body looks larger or smaller than the platform (or than the reference for this platform), suggesting the wrong platform or system.
+- "cannot_determine": the interface can't be judged (angle, overlap, PEEK with nothing radiopaque at the base, cropped, blurred).
+Map to "verdict": fully_seated = "seated"; slightly_lifted, lifted_or_lifted_rotated and incorrect_scan_body = "likely_not_seated"; cannot_determine = "cannot_determine".
+When you are on the fence, say so in the summary and recommend a second opinion from a teammate or senior technician, as the guide asks.
+
+REFERENCE IMAGES (provided with some requests; they are NOT the image being reviewed)
+- "Reference sheet": Dandy's labelled examples of the four categories (rows A-D). Use them to calibrate what each category looks like. Never report findings on the reference sheet.
+- "Platform reference": an X-ray from Dandy's guide of a named scan body on the implant platform the user selected. It shows how that scan body and platform normally look together, assumed correctly seated (the guide doesn't guarantee it). Compare the patient image against it for base shape, width at the platform, how the base meets the platform, and any space that is normal for that design. A clear width or shape mismatch against the reference for the same scan body supports "incorrect_scan_body". Different X-ray angles and magnification change apparent size, so judge proportions (scan body base width relative to the implant platform), not absolute size.
+- Box coordinates always refer to the patient image named in the request, never to a reference.
+
 BEFORE YOU CALL ANYTHING A GAP (do this every time)
 1. Locate the implant platform (the top edge of the implant body).
 2. Identify the screw channel and the screw, and exclude them.
@@ -79,7 +96,7 @@ IMAGE ANGLE (judge this before judging seating)
 - If angulation is "limited", do not use high confidence. If "poor", do not return "seated"; use "cannot_determine" unless a specific problem is clearly visible despite the angle, and add a retake tip saying how to correct the angle.
 
 TWO IMAGES
-You may receive two images: Image 1 is the full view; Image 2 is an enlarged crop of the implant area. Use the crop for fine detail and the full view for context (neighbouring teeth, bone level, overall tilt). When both are present, give box coordinates relative to Image 2.
+You may receive two patient images: Image 1 is the full view; Image 2 is an enlarged crop of the implant area. Use the crop for fine detail and the full view for context (neighbouring teeth, bone level, overall tilt). When both are present, give box coordinates relative to Image 2. Reference images, when present, come after these and are labelled as references.
 
 SYSTEM-SPECIFIC HANDLING
 - Only the Straumann rules above come from manufacturer documentation supplied to this tool. For every other system (authentic/OEM manufacturer scan bodies, 3Shape, Dess, TruAbutment, Dandy, unknown), apply the generic criteria only.
@@ -87,6 +104,7 @@ SYSTEM-SPECIFIC HANDLING
 - OEM (authentic manufacturer) scan bodies: they are made for that manufacturer's own implant connection, so seating errors are usually debris, tissue, bone or tightening rather than a connection mismatch.
 - If the scan body brand differs from the implant brand (typical for non-original scan bodies), the body, the library file in the design software, and the implant brand, platform and diameter must all match. A mismatched connection can look seated yet place the implant wrongly. Mention this check in the fixes when the user supplied a brand/platform that looks inconsistent, or when the connection fit looks wrong.
 - The user may give the implant brand/platform as free text. Use it as context only; never assume the connection from it if the image contradicts it.
+- When the user picks a platform from Dandy's guide, the request lists the scan bodies Dandy has on file for that platform and may include platform reference X-rays. That list is Dandy's own field experience, not manufacturer documentation: a scan body missing from it is a reason to look harder for "incorrect_scan_body", not proof of it.
 
 RULES FOR YOUR ANSWER
 - Be honest about uncertainty. If the image does not allow a judgement, use verdict "cannot_determine" and explain what would make it assessable.
@@ -104,6 +122,7 @@ Return ONLY a JSON object, no markdown fences, no prose:
   "angulation": { "rating": "adequate" | "limited" | "poor", "note": string (max 15 words) },
   "scan_body_description": string (short; name the structures you can identify, e.g. "polymer scan body with titanium screw in central channel, implant platform visible at left edge"),
   "verdict": "seated" | "likely_not_seated" | "cannot_determine",
+  "dandy_category": "fully_seated" | "slightly_lifted" | "lifted_or_lifted_rotated" | "incorrect_scan_body" | "cannot_determine",
   "confidence": "low" | "medium" | "high",
   "summary": string (1-2 plain sentences),
   "findings": [

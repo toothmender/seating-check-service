@@ -7,6 +7,15 @@ import crypto from "node:crypto";
 import { KNOWLEDGE, LOCATE_PROMPT } from "./prompts.js";
 import { parseJson } from "./jsonrepair.js";
 import { createGoogleAuth } from "./googleauth.js";
+import {
+  publicCatalog,
+  referencePath,
+  familyOf,
+  getPlatform,
+  criteriaSheet,
+  platformReferences,
+  platformContext,
+} from "./reference.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -136,6 +145,9 @@ const imageBlock = (data) => ({
   source: { type: "base64", media_type: "image/jpeg", data },
 });
 
+// The review rules are long and identical on every call: mark them cacheable.
+const cachedSystem = (text) => [{ type: "text", text, cache_control: { type: "ephemeral" } }];
+
 async function callClaude(system, content) {
   const r = await fetch(`${ANTHROPIC_BASE_URL}/v1/messages`, {
     method: "POST",
@@ -197,33 +209,57 @@ app.post("/api/locate", async (req, res) => {
   }
 });
 
+// Dandy's scan body guide: platform list for the screen, and reference X-rays to compare against.
+app.get("/api/catalog", (_req, res) => res.json(publicCatalog()));
+
+app.get("/api/reference/:file", (req, res) => {
+  const p = referencePath(req.params.file);
+  if (!p) return res.status(404).json({ error: "Reference image not found." });
+  res.set("Cache-Control", "private, max-age=3600"); // reference X-rays, not patient images
+  res.sendFile(p);
+});
+
+const CATEGORIES = ["fully_seated", "slightly_lifted", "lifted_or_lifted_rotated", "incorrect_scan_body", "cannot_determine"];
+
 const MODES = { auto: "Detect whether this is a clinical photo or an X-ray.", photo: "The user says this is an intraoral clinical photo.", xray: "The user says this is a periapical X-ray." };
 
 app.post("/api/review", async (req, res) => {
-  const { image, crop, mode = "auto", system = "Not sure / other", platform = "" } = req.body || {};
+  const { image, crop, mode = "auto", system = "Not sure / other", platform = "", platformId = "" } = req.body || {};
   if (!validImage(image)) return res.status(400).json({ error: "Send the image as a JPEG." });
   if (crop != null && !validImage(crop)) return res.status(400).json({ error: "Invalid crop image." });
   if (!MODES[mode]) return res.status(400).json({ error: "Invalid image type." });
   const sys = String(system).slice(0, 80);
-  const plat = String(platform).slice(0, 80);
+  const known = getPlatform(platformId);
+  const plat = known ? `${known.manufacturer} ${known.platform}` : String(platform).slice(0, 80);
+  const family = familyOf(sys);
 
-  const content = [
-    { type: "text", text: "Image 1: full image." },
-    imageBlock(image),
-  ];
-  if (crop) {
-    content.push({ type: "text", text: "Image 2: enlarged crop of the implant area." });
-    content.push(imageBlock(crop));
+  const content = [];
+  // Dandy's labelled category examples first, so they sit in the cacheable prefix with the rules.
+  const sheet = criteriaSheet();
+  if (sheet) {
+    content.push({ type: "text", text: "Reference sheet (not the patient image): Dandy's labelled examples of the four seating categories, rows A-D." });
+    content.push({ ...imageBlock(sheet), cache_control: { type: "ephemeral" } });
   }
+  content.push({ type: "text", text: "Image 1: full image." }, imageBlock(image));
+  if (crop) {
+    content.push({ type: "text", text: "Image 2: enlarged crop of the implant area." }, imageBlock(crop));
+  }
+  const refs = platformReferences(known, family);
+  refs.forEach((r, i) => {
+    content.push(
+      { type: "text", text: `Platform reference R${i + 1} (not the patient image): ${r.scan_body || "scan body"} on ${plat}, from Dandy's guide.` },
+      imageBlock(r.data)
+    );
+  });
   content.push({
     type: "text",
-    text: `${MODES[mode]} Scan body system reported by user: ${sys}. Implant brand/platform reported by user: ${plat || "not given"}. ${
+    text: `${MODES[mode]} Scan body system reported by user: ${sys}. Implant brand/platform reported by user: ${plat || "not given"}. ${platformContext(known, family, sys)} ${
       crop ? "Box coordinates are relative to Image 2." : "Box coordinates are relative to Image 1."
     } Rate image angulation first, then evaluate seating. Return the JSON object only.`,
   });
 
   try {
-    const data = await callClaude(KNOWLEDGE, content);
+    const data = await callClaude(cachedSystem(KNOWLEDGE), content);
     const parsed = parseJson(textOf(data));
     if (data.stop_reason === "max_tokens") parsed._partial = true;
     parsed.findings = Array.isArray(parsed.findings) ? parsed.findings : [];
@@ -241,6 +277,14 @@ app.post("/api/review", async (req, res) => {
     } else if (ang === "limited" && parsed.confidence === "high") {
       parsed.confidence = "medium";
     }
+
+    // Keep Dandy's category consistent with the final verdict.
+    let cat = CATEGORIES.includes(parsed.dandy_category) ? parsed.dandy_category : null;
+    if (parsed.verdict === "seated") cat = "fully_seated";
+    else if (parsed.verdict === "cannot_determine") cat = "cannot_determine";
+    else if (cat === "fully_seated" || cat === "cannot_determine") cat = null;
+    parsed.dandy_category = cat;
+    parsed._references = refs.map((r) => ({ file: r.file, scan_body: r.scan_body }));
     res.json(parsed);
   } catch (e) {
     res.status(e.status || 500).json({ error: e.status === 502 ? e.message : "The review could not be completed. Try again." });

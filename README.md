@@ -36,6 +36,17 @@ When `GOOGLE_CLIENT_ID` is set, every page and API route requires signing in wit
 - If `GOOGLE_CLIENT_ID` is not set, the shared `ACCESS_USER`/`ACCESS_PASSWORD` login applies as before.
 - `npm test` runs `authtest.js` against a stubbed Google token endpoint.
 
+## Dandy scan body guide (reference data)
+
+The review uses Dandy's "Scan Body X-ray Examples" guide (implant prep team). It lives in `server/reference/`, built by `tools/build_reference.py` from the guide's export (`scan_body_seating_data.json` + `images/`).
+
+- **What the review gets:** the guide's four seating categories and rules (TSV bevel exception, PEEK visibility, second opinion), a sheet of the 16 labelled category examples with every review, and up to two reference X-rays for the platform the user picks (same scan body family first). The request also lists the scan bodies the guide has on file for that platform and says when the chosen scan body type isn't among them. The answer includes `dandy_category`, kept consistent with the verdict on the server.
+- **What the screen gets:** manufacturer and platform pickers from `/api/catalog`, the scan bodies on file, a warning when the chosen type isn't listed, and reference thumbnails from `/api/reference/<file>`. Free text remains for implants not in the guide.
+- **Updating:** export the guide again, then run `python3 tools/build_reference.py path/to/export` (needs Pillow) and commit `server/reference/`. The script re-encodes images, builds `criteria_sheet.jpg` and `catalog.json`, and writes `DATA_ISSUES.md`.
+- **Duplicates:** an image filed under more than one platform is left out (it can't be a reliable size reference) unless the image's own label confirms the platform. See `DATA_ISSUES.md`.
+- **Cost:** reviews carry 1-3 extra images. The rules and the category sheet are marked for prompt caching, so repeated reviews within a few minutes cost less.
+- The platform list is Dandy's field experience, not manufacturer documentation. A scan body missing from it is a prompt to check, not proof of a wrong part.
+
 ## Redaction step (runs before every review)
 
 Every image goes through an in-browser redaction screen before it is read for the seating check, whether it arrives by picker, drag-and-drop or paste. Nothing on that screen talks to the server.

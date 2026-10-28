@@ -1,0 +1,1651 @@
+{
+ "source": "Scan Body X-ray Examples (Rodrigo Bravo, last updated Dec 3, 2025)",
+ "seating_criteria": {
+  "fully_seated": "Scan body flush with implant platform. Exception: Zimmer TSV often shows an apparent gap due to the implant bevel; seated if edges touch. PEEK scan bodies show poorly on x-ray; use titanium base or screw to verify; get a second opinion if unsure.",
+  "slightly_lifted": "Any space between scan body and implant is suspicious. Usually engaging but not fully seated (bone, hard tissue, leaning on tooth). Single unit: possible open occlusion. Bridge: refab.",
+  "lifted_or_lifted_rotated": "Usually screwed in without being properly seated, or scan body does not belong to that implant; also bone, hard tissue, or leaning on tooth.",
+  "incorrect_scan_body": "A larger or smaller scan body can indicate wrong platform or system. Get a second opinion if unsure."
+ },
+ "notes": [
+  "TruAbutment only carries the Legacy 3.0 platform scan body for Implant Direct. Zimmer TSV 5.7 is compatible with Implant Direct Legacy 5.7."
+ ],
+ "criteria_sheet": "criteria_sheet.jpg",
+ "manufacturers": [
+  {
+   "manufacturer": "AB Dental",
+   "platforms": [
+    {
+     "id": "ab-dental-i5-conical",
+     "platform": "I5 (Conical)",
+     "scan_bodies": [
+      {
+       "name": "Medentika SB",
+       "family": "other"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-7_1.jpg",
+       "scan_body": "Medentika SB",
+       "family": "other"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "manufacturer": "BioHorizons",
+   "platforms": [
+    {
+     "id": "biohorizons-3-0",
+     "platform": "3.0",
+     "scan_bodies": [
+      {
+       "name": "Authentic BioHorizons Titanium",
+       "family": "authentic"
+      },
+      {
+       "name": "Authentic NT Trading",
+       "family": "authentic"
+      },
+      {
+       "name": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "name": "TruAbutment",
+       "family": "truabutment"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-8_1.jpg",
+       "scan_body": "Authentic BioHorizons Titanium",
+       "family": "authentic"
+      },
+      {
+       "file": "d-8_2.jpg",
+       "scan_body": "Authentic BioHorizons Titanium",
+       "family": "authentic"
+      },
+      {
+       "file": "d-9_1.jpg",
+       "scan_body": "Authentic NT Trading",
+       "family": "authentic"
+      },
+      {
+       "file": "d-10_1.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "file": "d-10_2.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "file": "d-11_1.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "file": "d-12_1.jpg",
+       "scan_body": "TruAbutment",
+       "family": "truabutment"
+      }
+     ]
+    },
+    {
+     "id": "biohorizons-3-5",
+     "platform": "3.5",
+     "scan_bodies": [
+      {
+       "name": "3Shape",
+       "family": "3shape"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-13_2.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "file": "d-13_1.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      }
+     ]
+    },
+    {
+     "id": "biohorizons-4-5",
+     "platform": "4.5",
+     "scan_bodies": [
+      {
+       "name": "Authentic Titanium",
+       "family": "authentic"
+      },
+      {
+       "name": "3Shape",
+       "family": "3shape"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-14_1.jpg",
+       "scan_body": "Authentic Titanium",
+       "family": "authentic"
+      },
+      {
+       "file": "d-15_1.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "manufacturer": "Blue Sky Bio",
+   "platforms": [
+    {
+     "id": "blue-sky-bio-bio-max-np",
+     "platform": "BIO Max NP",
+     "scan_bodies": [
+      {
+       "name": "Authentic: Scannable Closed Tray Impression Transfer",
+       "family": "authentic"
+      },
+      {
+       "name": "3Shape",
+       "family": "3shape"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-16_1.jpg",
+       "scan_body": "Authentic: Scannable Closed Tray Impression Transfer",
+       "family": "authentic"
+      },
+      {
+       "file": "d-17_2.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "file": "d-17_1.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "manufacturer": "Camlog",
+   "platforms": [
+    {
+     "id": "camlog-camlog-4-3",
+     "platform": "Camlog 4.3",
+     "scan_bodies": [
+      {
+       "name": "3Shape",
+       "family": "3shape"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-18_1.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      }
+     ]
+    },
+    {
+     "id": "camlog-camlog-6-0",
+     "platform": "Camlog 6.0",
+     "scan_bodies": [
+      {
+       "name": "3Shape",
+       "family": "3shape"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-19_1.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "manufacturer": "Dentsply Sirona",
+   "platforms": [
+    {
+     "id": "dentsply-sirona-ankylos-c-x",
+     "platform": "Ankylos C/X",
+     "scan_bodies": [
+      {
+       "name": "3Shape",
+       "family": "3shape"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-20_1.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      }
+     ]
+    },
+    {
+     "id": "dentsply-sirona-astra-tech-ev-3-0",
+     "platform": "Astra Tech EV 3.0",
+     "scan_bodies": [
+      {
+       "name": "Authentic Atlantis",
+       "family": "authentic"
+      },
+      {
+       "name": "3Shape",
+       "family": "3shape"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-21_1.jpg",
+       "scan_body": "Authentic Atlantis",
+       "family": "authentic"
+      },
+      {
+       "file": "d-22_1.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      }
+     ]
+    },
+    {
+     "id": "dentsply-sirona-astra-tech-ev-3-6",
+     "platform": "Astra Tech EV 3.6",
+     "scan_bodies": [
+      {
+       "name": "3Shape",
+       "family": "3shape"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-23_2.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "file": "d-23_1.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      }
+     ]
+    },
+    {
+     "id": "dentsply-sirona-astra-tech-ev-4-2",
+     "platform": "Astra Tech EV 4.2",
+     "scan_bodies": [
+      {
+       "name": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "name": "Dess",
+       "family": "dess"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-24_2.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "file": "d-24_1.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "file": "d-25_1.jpg",
+       "scan_body": "Dess",
+       "family": "dess"
+      },
+      {
+       "file": "d-25_2.jpg",
+       "scan_body": "Dess",
+       "family": "dess"
+      }
+     ]
+    },
+    {
+     "id": "dentsply-sirona-astra-tech-ev-4-8",
+     "platform": "Astra Tech EV 4.8",
+     "scan_bodies": [
+      {
+       "name": "Authentic Atlantis",
+       "family": "authentic"
+      },
+      {
+       "name": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "name": "Dess",
+       "family": "dess"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-26_1.jpg",
+       "scan_body": "Authentic Atlantis",
+       "family": "authentic"
+      },
+      {
+       "file": "d-26_2.jpg",
+       "scan_body": "Authentic Atlantis",
+       "family": "authentic"
+      },
+      {
+       "file": "d-27_2.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "file": "d-27_1.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "file": "d-28_2.jpg",
+       "scan_body": "Dess",
+       "family": "dess"
+      },
+      {
+       "file": "d-28_1.jpg",
+       "scan_body": "Dess",
+       "family": "dess"
+      }
+     ]
+    },
+    {
+     "id": "dentsply-sirona-astra-tech-ev-5-4",
+     "platform": "Astra Tech EV 5.4",
+     "scan_bodies": [
+      {
+       "name": "Authentic Atlantis",
+       "family": "authentic"
+      },
+      {
+       "name": "3Shape",
+       "family": "3shape"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-29_1.jpg",
+       "scan_body": "Authentic Atlantis",
+       "family": "authentic"
+      },
+      {
+       "file": "d-30_2.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "file": "d-30_1.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "manufacturer": "Ditron Dental",
+   "platforms": [
+    {
+     "id": "ditron-dental-ult-mpi",
+     "platform": "ULT/MPI",
+     "scan_bodies": [
+      {
+       "name": "Dess",
+       "family": "dess"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-31_1.jpg",
+       "scan_body": "Dess",
+       "family": "dess"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "manufacturer": "Euroteknika",
+   "platforms": [
+    {
+     "id": "euroteknika-natea-wp",
+     "platform": "Natea WP",
+     "scan_bodies": [
+      {
+       "name": "3Shape",
+       "family": "3shape"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-31_2.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "manufacturer": "Glidewell",
+   "platforms": [
+    {
+     "id": "glidewell-ht-hahn-tapered-5-0",
+     "platform": "HT/ Hahn Tapered 5.0",
+     "scan_bodies": [
+      {
+       "name": "3Shape",
+       "family": "3shape"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-32_1.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "manufacturer": "Hiossen",
+   "platforms": [
+    {
+     "id": "hiossen-et-mini",
+     "platform": "ET Mini",
+     "scan_bodies": [
+      {
+       "name": "Authentic 1",
+       "family": "authentic"
+      },
+      {
+       "name": "Authentic 2",
+       "family": "authentic"
+      },
+      {
+       "name": "Long 2022 SB",
+       "family": "authentic"
+      },
+      {
+       "name": "3Shape",
+       "family": "3shape"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-34_1.jpg",
+       "scan_body": "Long 2022 SB",
+       "family": "authentic"
+      },
+      {
+       "file": "d-35_1.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      }
+     ]
+    },
+    {
+     "id": "hiossen-et-regular",
+     "platform": "ET Regular",
+     "scan_bodies": [
+      {
+       "name": "Authentic 1",
+       "family": "authentic"
+      },
+      {
+       "name": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "name": "Dess",
+       "family": "dess"
+      },
+      {
+       "name": "TruAbutment",
+       "family": "truabutment"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-36_2.jpg",
+       "scan_body": "Authentic 1",
+       "family": "authentic"
+      },
+      {
+       "file": "d-37_1.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "file": "d-37_2.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "file": "d-38_1.jpg",
+       "scan_body": "Dess",
+       "family": "dess"
+      },
+      {
+       "file": "d-39_1.jpg",
+       "scan_body": "TruAbutment",
+       "family": "truabutment"
+      },
+      {
+       "file": "d-40_1.jpg",
+       "scan_body": "TruAbutment",
+       "family": "truabutment"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "manufacturer": "IBS Implant (Innobiosurg)",
+   "platforms": [
+    {
+     "id": "ibs-implant-innobiosurg-magic-fc-regular",
+     "platform": "Magic FC Regular",
+     "scan_bodies": [
+      {
+       "name": "Authentic",
+       "family": "authentic"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-41_1.jpg",
+       "scan_body": "Authentic",
+       "family": "authentic"
+      }
+     ]
+    },
+    {
+     "id": "ibs-implant-innobiosurg-magicore-4-5",
+     "platform": "MagiCore 4.5",
+     "scan_bodies": [
+      {
+       "name": "Authentic",
+       "family": "authentic"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-42_1.jpg",
+       "scan_body": "Authentic",
+       "family": "authentic"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "manufacturer": "Implant Direct",
+   "platforms": [
+    {
+     "id": "implant-direct-legacy-3-0",
+     "platform": "Legacy 3.0",
+     "scan_bodies": [
+      {
+       "name": "TruAbutment",
+       "family": "truabutment"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-43_1.jpg",
+       "scan_body": "TruAbutment",
+       "family": "truabutment"
+      }
+     ]
+    },
+    {
+     "id": "implant-direct-legacy-3-5",
+     "platform": "Legacy 3.5",
+     "scan_bodies": [
+      {
+       "name": "Authentic",
+       "family": "authentic"
+      },
+      {
+       "name": "3Shape",
+       "family": "3shape"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-45_1.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      }
+     ]
+    },
+    {
+     "id": "implant-direct-legacy-5-7",
+     "platform": "Legacy 5.7",
+     "scan_bodies": [
+      {
+       "name": "TruAbutment (Zimmer TSV 5.7)",
+       "family": "truabutment"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-46_1.jpg",
+       "scan_body": "TruAbutment (Zimmer TSV 5.7)",
+       "family": "truabutment"
+      }
+     ]
+    },
+    {
+     "id": "implant-direct-interactive-3-0",
+     "platform": "Interactive 3.0",
+     "scan_bodies": [
+      {
+       "name": "3Shape",
+       "family": "3shape"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-48_1.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "file": "d-49_1.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      }
+     ]
+    },
+    {
+     "id": "implant-direct-interactive-3-4",
+     "platform": "Interactive 3.4",
+     "scan_bodies": [
+      {
+       "name": "3Shape",
+       "family": "3shape"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-50_1.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "manufacturer": "Keystone",
+   "platforms": [
+    {
+     "id": "keystone-genesis-4-1",
+     "platform": "Genesis 4.1",
+     "scan_bodies": [
+      {
+       "name": "Authentic Terrats (Dess-type)",
+       "family": "authentic"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-51_1.jpg",
+       "scan_body": "Authentic Terrats (Dess-type)",
+       "family": "authentic"
+      }
+     ]
+    },
+    {
+     "id": "keystone-molaris-tilobe-maxx",
+     "platform": "Molaris Tilobe Maxx",
+     "scan_bodies": [
+      {
+       "name": "Authentic Terrats (Dess-type)",
+       "family": "authentic"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-52_1.jpg",
+       "scan_body": "Authentic Terrats (Dess-type)",
+       "family": "authentic"
+      }
+     ]
+    },
+    {
+     "id": "keystone-paltop-conical-connection",
+     "platform": "Paltop Conical Connection",
+     "scan_bodies": [
+      {
+       "name": "Authentic Paltop PCA/Dynamic Conical",
+       "family": "authentic"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-53_1.jpg",
+       "scan_body": "Authentic Paltop PCA/Dynamic Conical",
+       "family": "authentic"
+      }
+     ]
+    },
+    {
+     "id": "keystone-paltop-internal-hex",
+     "platform": "Paltop Internal Hex",
+     "scan_bodies": [
+      {
+       "name": "Authentic Paltop SP",
+       "family": "authentic"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-54_1.jpg",
+       "scan_body": "Authentic Paltop SP",
+       "family": "authentic"
+      }
+     ]
+    },
+    {
+     "id": "keystone-prima-plus-5-0",
+     "platform": "Prima Plus 5.0",
+     "scan_bodies": [
+      {
+       "name": "Authentic Terrats (Dess-type)",
+       "family": "authentic"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-55_1.jpg",
+       "scan_body": "Authentic Terrats (Dess-type)",
+       "family": "authentic"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "manufacturer": "Little Implant Company",
+   "platforms": [
+    {
+     "id": "little-implant-company-pamela-ray-marc-nevins-3-5",
+     "platform": "Pamela Ray/Marc Nevins 3.5",
+     "scan_bodies": [
+      {
+       "name": "3Shape",
+       "family": "3shape"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-56_1.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "manufacturer": "MegaGen",
+   "platforms": [
+    {
+     "id": "megagen-anyridge",
+     "platform": "AnyRidge",
+     "scan_bodies": [
+      {
+       "name": "Authentic Short",
+       "family": "authentic"
+      },
+      {
+       "name": "Authentic Long",
+       "family": "authentic"
+      },
+      {
+       "name": "Authentic SHA w/out Post",
+       "family": "authentic"
+      },
+      {
+       "name": "Dess",
+       "family": "dess"
+      },
+      {
+       "name": "TruAbutment",
+       "family": "truabutment"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-57_1.jpg",
+       "scan_body": "Authentic Short",
+       "family": "authentic"
+      },
+      {
+       "file": "d-58_1.jpg",
+       "scan_body": "Authentic Long",
+       "family": "authentic"
+      },
+      {
+       "file": "d-59_1.jpg",
+       "scan_body": "Authentic Long",
+       "family": "authentic"
+      },
+      {
+       "file": "d-59_2.jpg",
+       "scan_body": "Authentic SHA w/out Post",
+       "family": "authentic"
+      },
+      {
+       "file": "d-60_1.jpg",
+       "scan_body": "Dess",
+       "family": "dess"
+      },
+      {
+       "file": "d-61_1.jpg",
+       "scan_body": "TruAbutment",
+       "family": "truabutment"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "manufacturer": "MIS",
+   "platforms": [
+    {
+     "id": "mis-seven-sp",
+     "platform": "Seven SP",
+     "scan_bodies": [
+      {
+       "name": "3Shape",
+       "family": "3shape"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-62_1.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "manufacturer": "Neodent",
+   "platforms": [
+    {
+     "id": "neodent-gm",
+     "platform": "GM",
+     "scan_bodies": [
+      {
+       "name": "Authentic: Neodent GM",
+       "family": "authentic"
+      },
+      {
+       "name": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "name": "Dess",
+       "family": "dess"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-67_3.jpg",
+       "scan_body": "Dess",
+       "family": "dess"
+      },
+      {
+       "file": "d-64_1.jpg",
+       "scan_body": "Authentic: Neodent GM",
+       "family": "authentic"
+      },
+      {
+       "file": "d-65_1.jpg",
+       "scan_body": "Authentic: Neodent GM",
+       "family": "authentic"
+      },
+      {
+       "file": "d-66_1.jpg",
+       "scan_body": "Authentic: Neodent GM",
+       "family": "authentic"
+      },
+      {
+       "file": "d-67_1.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "file": "d-67_2.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      }
+     ]
+    },
+    {
+     "id": "neodent-zi",
+     "platform": "Zi",
+     "scan_bodies": [
+      {
+       "name": "Authentic: Neodent Zi",
+       "family": "authentic"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-68_1.jpg",
+       "scan_body": "Authentic: Neodent Zi",
+       "family": "authentic"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "manufacturer": "Nobel Biocare",
+   "platforms": [
+    {
+     "id": "nobel-biocare-branemark-np",
+     "platform": "Branemark NP",
+     "scan_bodies": [
+      {
+       "name": "3Shape",
+       "family": "3shape"
+      }
+     ],
+     "references": []
+    },
+    {
+     "id": "nobel-biocare-branemark-rp",
+     "platform": "Branemark RP",
+     "scan_bodies": [
+      {
+       "name": "3Shape",
+       "family": "3shape"
+      }
+     ],
+     "references": []
+    },
+    {
+     "id": "nobel-biocare-branemark-wp",
+     "platform": "Branemark WP",
+     "scan_bodies": [
+      {
+       "name": "3Shape",
+       "family": "3shape"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-70_1.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      }
+     ]
+    },
+    {
+     "id": "nobel-biocare-cc-np",
+     "platform": "CC NP",
+     "scan_bodies": [
+      {
+       "name": "Authentic: Elos SA Version",
+       "family": "authentic"
+      },
+      {
+       "name": "Authentic: Elos Non-SA Version",
+       "family": "authentic"
+      },
+      {
+       "name": "Dess",
+       "family": "dess"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-70_2.jpg",
+       "scan_body": "Authentic: Elos SA Version",
+       "family": "authentic"
+      },
+      {
+       "file": "d-71_1.jpg",
+       "scan_body": "Authentic: Elos Non-SA Version",
+       "family": "authentic"
+      },
+      {
+       "file": "d-72_1.jpg",
+       "scan_body": "Dess",
+       "family": "dess"
+      }
+     ]
+    },
+    {
+     "id": "nobel-biocare-cc-rp",
+     "platform": "CC RP",
+     "scan_bodies": [
+      {
+       "name": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "name": "Dess",
+       "family": "dess"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-73_1.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "file": "d-73_2.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "file": "d-74_1.jpg",
+       "scan_body": "Dess",
+       "family": "dess"
+      },
+      {
+       "file": "d-74_2.jpg",
+       "scan_body": "Dess",
+       "family": "dess"
+      }
+     ]
+    },
+    {
+     "id": "nobel-biocare-tc-wp",
+     "platform": "TC WP",
+     "scan_bodies": [
+      {
+       "name": "Dess",
+       "family": "dess"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-75_1.jpg",
+       "scan_body": "Dess",
+       "family": "dess"
+      }
+     ]
+    },
+    {
+     "id": "nobel-biocare-n1-tcc-implant-level",
+     "platform": "N1 TCC Implant Level",
+     "scan_bodies": [],
+     "references": [
+      {
+       "file": "d-76_1.jpg",
+       "scan_body": "",
+       "family": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "manufacturer": "Ritter Implants",
+   "platforms": [
+    {
+     "id": "ritter-implants-spiral",
+     "platform": "Spiral",
+     "scan_bodies": [
+      {
+       "name": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "name": "Dess",
+       "family": "dess"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-77_1.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "file": "d-78_1.jpg",
+       "scan_body": "Dess",
+       "family": "dess"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "manufacturer": "S.I.N.",
+   "platforms": [
+    {
+     "id": "s-i-n-epikut-epikut-plus",
+     "platform": "Epikut/Epikut Plus",
+     "scan_bodies": [],
+     "references": []
+    },
+    {
+     "id": "s-i-n-epikut-s-epikut-s-plus",
+     "platform": "Epikut S/Epikut S Plus",
+     "scan_bodies": [
+      {
+       "name": "Authentic S.I.N. MT 16° Scanning Jig",
+       "family": "authentic"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-79_1.jpg",
+       "scan_body": "Authentic S.I.N. MT 16° Scanning Jig",
+       "family": "authentic"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "manufacturer": "Straumann",
+   "platforms": [
+    {
+     "id": "straumann-bl-sc",
+     "platform": "BL SC",
+     "scan_bodies": [
+      {
+       "name": "Authentic Peek",
+       "family": "authentic"
+      },
+      {
+       "name": "TruAbutment",
+       "family": "truabutment"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-80_1.jpg",
+       "scan_body": "Authentic Peek",
+       "family": "authentic"
+      },
+      {
+       "file": "d-81_1.jpg",
+       "scan_body": "TruAbutment",
+       "family": "truabutment"
+      }
+     ]
+    },
+    {
+     "id": "straumann-bl-nc",
+     "platform": "BL NC",
+     "scan_bodies": [
+      {
+       "name": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "name": "Authentic: Straumann Titanium",
+       "family": "authentic"
+      },
+      {
+       "name": "Dess",
+       "family": "dess"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-82_1.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "file": "d-82_2.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "file": "d-83_1.jpg",
+       "scan_body": "Authentic: Straumann Titanium",
+       "family": "authentic"
+      }
+     ]
+    },
+    {
+     "id": "straumann-bl-rc",
+     "platform": "BL RC",
+     "scan_bodies": [
+      {
+       "name": "Authentic: Straumann Titanium",
+       "family": "authentic"
+      },
+      {
+       "name": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "name": "Dess",
+       "family": "dess"
+      },
+      {
+       "name": "TruAbutment",
+       "family": "truabutment"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-84_2.jpg",
+       "scan_body": "Authentic: Straumann Titanium",
+       "family": "authentic"
+      },
+      {
+       "file": "d-85_1.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "file": "d-85_2.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "file": "d-86_1.jpg",
+       "scan_body": "TruAbutment",
+       "family": "truabutment"
+      }
+     ]
+    },
+    {
+     "id": "straumann-blx-rb",
+     "platform": "BLX RB",
+     "scan_bodies": [
+      {
+       "name": "Authentic: Straumann Titanium",
+       "family": "authentic"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-87_1.jpg",
+       "scan_body": "Authentic: Straumann Titanium",
+       "family": "authentic"
+      }
+     ]
+    },
+    {
+     "id": "straumann-tl-rn",
+     "platform": "TL RN",
+     "scan_bodies": [
+      {
+       "name": "3Shape",
+       "family": "3shape"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-88_1.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      }
+     ]
+    },
+    {
+     "id": "straumann-tl-wn",
+     "platform": "TL WN",
+     "scan_bodies": [
+      {
+       "name": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "name": "Authentic: Straumann Titanium",
+       "family": "authentic"
+      },
+      {
+       "name": "TruAbutment",
+       "family": "truabutment"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-89_1.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "file": "d-89_2.jpg",
+       "scan_body": "Authentic: Straumann Titanium",
+       "family": "authentic"
+      },
+      {
+       "file": "d-90_1.jpg",
+       "scan_body": "TruAbutment",
+       "family": "truabutment"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "manufacturer": "Sweden & Martina",
+   "platforms": [
+    {
+     "id": "sweden-martina-shelta-shelta-sl-3-8",
+     "platform": "Shelta/Shelta SL 3.8",
+     "scan_bodies": [
+      {
+       "name": "Authentic: Sweden & Martina",
+       "family": "authentic"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-90_2.jpg",
+       "scan_body": "Authentic: Sweden & Martina",
+       "family": "authentic"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "manufacturer": "ZimVie (Zimmer Biomet)",
+   "platforms": [
+    {
+     "id": "zimvie-zimmer-biomet-certain-3-4",
+     "platform": "Certain 3.4",
+     "scan_bodies": [
+      {
+       "name": "Authentic: EEHA",
+       "family": "authentic"
+      },
+      {
+       "name": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "name": "Dess IO",
+       "family": "dess"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-91_1.jpg",
+       "scan_body": "Authentic: EEHA",
+       "family": "authentic"
+      },
+      {
+       "file": "d-92_1.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "file": "d-93_1.jpg",
+       "scan_body": "Dess IO",
+       "family": "dess"
+      },
+      {
+       "file": "d-94_1.jpg",
+       "scan_body": "Dess IO",
+       "family": "dess"
+      }
+     ]
+    },
+    {
+     "id": "zimvie-zimmer-biomet-certain-4-1",
+     "platform": "Certain 4.1",
+     "scan_bodies": [
+      {
+       "name": "Authentic EEHA",
+       "family": "authentic"
+      },
+      {
+       "name": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "name": "Dess IO",
+       "family": "dess"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-95_1.jpg",
+       "scan_body": "Authentic EEHA",
+       "family": "authentic"
+      },
+      {
+       "file": "d-96_1.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "file": "d-96_2.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "file": "d-97_1.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "file": "d-98_1.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "file": "d-99_1.jpg",
+       "scan_body": "Dess IO",
+       "family": "dess"
+      }
+     ]
+    },
+    {
+     "id": "zimvie-zimmer-biomet-certain-5-0",
+     "platform": "Certain 5.0",
+     "scan_bodies": [
+      {
+       "name": "Authentic EEHA",
+       "family": "authentic"
+      },
+      {
+       "name": "3Shape",
+       "family": "3shape"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-100_1.jpg",
+       "scan_body": "Authentic EEHA",
+       "family": "authentic"
+      },
+      {
+       "file": "d-100_2.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      }
+     ]
+    },
+    {
+     "id": "zimvie-zimmer-biomet-certain-6-0",
+     "platform": "Certain 6.0",
+     "scan_bodies": [
+      {
+       "name": "3Shape",
+       "family": "3shape"
+      }
+     ],
+     "references": []
+    },
+    {
+     "id": "zimvie-zimmer-biomet-eztetic-np",
+     "platform": "Eztetic NP",
+     "scan_bodies": [
+      {
+       "name": "Authentic EEHA",
+       "family": "authentic"
+      },
+      {
+       "name": "TruAbutment",
+       "family": "truabutment"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-102_1.jpg",
+       "scan_body": "TruAbutment",
+       "family": "truabutment"
+      }
+     ]
+    },
+    {
+     "id": "zimvie-zimmer-biomet-tsv-3-5",
+     "platform": "TSV 3.5",
+     "scan_bodies": [
+      {
+       "name": "3Shape",
+       "family": "3shape"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-103_1.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "file": "d-103_2.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      }
+     ]
+    },
+    {
+     "id": "zimvie-zimmer-biomet-tsv-4-5",
+     "platform": "TSV 4.5",
+     "scan_bodies": [
+      {
+       "name": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "name": "Dess",
+       "family": "dess"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-104_1.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "file": "d-105_1.jpg",
+       "scan_body": "Dess",
+       "family": "dess"
+      }
+     ]
+    },
+    {
+     "id": "zimvie-zimmer-biomet-tsv-5-7",
+     "platform": "TSV 5.7",
+     "scan_bodies": [
+      {
+       "name": "Authentic GenTek",
+       "family": "authentic"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-105_2.jpg",
+       "scan_body": "Authentic GenTek",
+       "family": "authentic"
+      }
+     ]
+    },
+    {
+     "id": "zimvie-zimmer-biomet-tsx-np-2-9",
+     "platform": "TSX NP (2.9)",
+     "scan_bodies": [
+      {
+       "name": "Authentic EEHA",
+       "family": "authentic"
+      },
+      {
+       "name": "TruAbutment",
+       "family": "truabutment"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-107_1.jpg",
+       "scan_body": "TruAbutment",
+       "family": "truabutment"
+      }
+     ]
+    },
+    {
+     "id": "zimvie-zimmer-biomet-tsx-3-5",
+     "platform": "TSX 3.5",
+     "scan_bodies": [
+      {
+       "name": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "name": "Authentic EEHA",
+       "family": "authentic"
+      }
+     ],
+     "references": [
+      {
+       "file": "d-108_1.jpg",
+       "scan_body": "3Shape",
+       "family": "3shape"
+      },
+      {
+       "file": "d-109_1.jpg",
+       "scan_body": "Authentic EEHA",
+       "family": "authentic"
+      },
+      {
+       "file": "d-109_2.jpg",
+       "scan_body": "Authentic EEHA",
+       "family": "authentic"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

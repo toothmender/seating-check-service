@@ -26,6 +26,26 @@ const SYSTEMS = [
   "Straumann Scanbody (3-piece, post + cap)",
 ];
 
+// How the scan body choices above map onto the families in Dandy's scan body guide.
+const SYSTEM_FAMILY = {
+  "Authentic manufacturer (OEM) scan body": "authentic",
+  "3Shape scan body": "3shape",
+  "Dess scan body": "dess",
+  "TruAbutment scan body": "truabutment",
+  "Straumann CARES Mono Scanbody (2-piece)": "authentic",
+  "Straumann Scanbody (3-piece, post + cap)": "authentic",
+};
+const FAMILY_NAME = { authentic: "manufacturer (OEM)", "3shape": "3Shape", dess: "Dess", truabutment: "TruAbutment", other: "other" };
+const OTHER = "__other";
+
+// Dandy's seating categories, as the implant technicians name them.
+const CATEGORY = {
+  fully_seated: "Fully seated",
+  slightly_lifted: "Slightly lifted",
+  lifted_or_lifted_rotated: "Lifted / lifted and rotated",
+  incorrect_scan_body: "Incorrect scan body",
+};
+
 /* ------------------------------------------------------------------ */
 /* Palette                                                             */
 /* ------------------------------------------------------------------ */
@@ -166,7 +186,10 @@ export default function SeatingCheck() {
   const [selId, setSelId] = useState(null);
   const [mode, setMode] = useState("auto");
   const [system, setSystem] = useState(SYSTEMS[0]);
-  const [platform, setPlatform] = useState("");
+  const [platform, setPlatform] = useState(""); // free text, for implants not in the guide
+  const [catalog, setCatalog] = useState(null); // Dandy's scan body guide
+  const [mfr, setMfr] = useState("");
+  const [platId, setPlatId] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [active, setActive] = useState(null);
@@ -176,6 +199,28 @@ export default function SeatingCheck() {
   const fileRef = useRef(null);
   const idRef = useRef(0);
   const queueSeq = useRef(0);
+
+  // Load the manufacturer/platform list from Dandy's guide. Without it, the free-text field is used.
+  useEffect(() => {
+    let live = true;
+    fetch("/api/catalog", { credentials: "same-origin" })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((c) => live && c && c.manufacturers && c.manufacturers.length && setCatalog(c))
+      .catch(() => {});
+    return () => {
+      live = false;
+    };
+  }, []);
+
+  const mfrEntry = catalog && mfr && mfr !== OTHER ? catalog.manufacturers.find((m) => m.manufacturer === mfr) : null;
+  const plat = mfrEntry ? mfrEntry.platforms.find((p) => p.id === platId) || null : null;
+  const useFreeText = !catalog || mfr === OTHER;
+  const family = SYSTEM_FAMILY[system] || null;
+  const listedFamilies = plat ? new Set(plat.scan_bodies.map((s) => s.family)) : null;
+  const notListed = !!(plat && family && plat.scan_bodies.length && !listedFamilies.has(family));
+  const platRefs = plat
+    ? [...plat.references].sort((a, b) => (b.family === family) - (a.family === family))
+    : [];
 
   // Free the local text-detection worker once the redaction queue is empty.
   useEffect(() => {
@@ -266,7 +311,8 @@ export default function SeatingCheck() {
         crop: crop ? crop.base64 : null,
         mode,
         system,
-        platform: platform.trim(),
+        platformId: plat ? plat.id : "",
+        platform: plat ? "" : useFreeText ? platform.trim() : mfr,
       });
 
       // Map boxes from the crop back onto the full image
@@ -409,20 +455,130 @@ export default function SeatingCheck() {
             ))}
           </select>
 
-          <label htmlFor="plat" style={{ fontSize: 13, fontWeight: 600, display: "block", margin: "12px 0 6px" }}>
-            Implant brand and platform (optional)
-          </label>
-          <input
-            id="plat"
-            type="text"
-            value={platform}
-            onChange={(e) => setPlatform(e.target.value)}
-            placeholder="e.g. Straumann BLX RB, Zimmer TSV 4.5"
-            style={{ width: "100%", boxSizing: "border-box", padding: "10px 8px", fontSize: 15, borderRadius: 8, border: `1px solid ${C.line}`, background: C.panel, color: C.ink }}
-          />
-          {system !== SYSTEMS[0] && !system.startsWith("Straumann") && (
+          {catalog && (
+            <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 12 }}>
+              <div style={{ flex: "1 1 200px", minWidth: 0 }}>
+                <label htmlFor="mfr" style={{ fontSize: 13, fontWeight: 600, display: "block", marginBottom: 6 }}>
+                  Implant manufacturer (optional)
+                </label>
+                <select
+                  id="mfr"
+                  value={mfr}
+                  onChange={(e) => {
+                    setMfr(e.target.value);
+                    setPlatId("");
+                  }}
+                  style={{ width: "100%", padding: "10px 8px", fontSize: 15, borderRadius: 8, border: `1px solid ${C.line}`, background: C.panel, color: C.ink }}
+                >
+                  <option value="">Not sure</option>
+                  {catalog.manufacturers.map((m) => (
+                    <option key={m.manufacturer} value={m.manufacturer}>
+                      {m.manufacturer}
+                    </option>
+                  ))}
+                  <option value={OTHER}>Not listed (type it in)</option>
+                </select>
+              </div>
+              {mfrEntry && (
+                <div style={{ flex: "1 1 200px", minWidth: 0 }}>
+                  <label htmlFor="platsel" style={{ fontSize: 13, fontWeight: 600, display: "block", marginBottom: 6 }}>
+                    Platform
+                  </label>
+                  <select
+                    id="platsel"
+                    value={platId}
+                    onChange={(e) => setPlatId(e.target.value)}
+                    style={{ width: "100%", padding: "10px 8px", fontSize: 15, borderRadius: 8, border: `1px solid ${C.line}`, background: C.panel, color: C.ink }}
+                  >
+                    <option value="">Not sure</option>
+                    {mfrEntry.platforms.map((p) => (
+                      <option key={p.id} value={p.id}>
+                        {p.platform}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              )}
+            </div>
+          )}
+
+          {useFreeText && (
+            <>
+              <label htmlFor="plat" style={{ fontSize: 13, fontWeight: 600, display: "block", margin: "12px 0 6px" }}>
+                Implant brand and platform (optional)
+              </label>
+              <input
+                id="plat"
+                type="text"
+                value={platform}
+                onChange={(e) => setPlatform(e.target.value)}
+                placeholder="e.g. Straumann BLX RB, Zimmer TSV 4.5"
+                style={{ width: "100%", boxSizing: "border-box", padding: "10px 8px", fontSize: 15, borderRadius: 8, border: `1px solid ${C.line}`, background: C.panel, color: C.ink }}
+              />
+            </>
+          )}
+
+          {plat && (
+            <div style={{ marginTop: 10, fontSize: 13, lineHeight: 1.45, color: C.muted }}>
+              {plat.scan_bodies.length ? (
+                <>
+                  Dandy's guide has these scan bodies on file for {plat.platform}:{" "}
+                  <span style={{ color: C.ink }}>{plat.scan_bodies.map((s) => s.name).join(", ")}</span>.
+                </>
+              ) : (
+                <>Dandy's guide has no scan bodies on file for {plat.platform}.</>
+              )}
+              {notListed && (
+                <div role="note" style={{ marginTop: 8, background: C.watchBg, color: C.watch, borderRadius: 8, padding: "8px 10px" }}>
+                  There's no {FAMILY_NAME[family]} scan body for this platform in Dandy's guide. Check it's the right scan body for the implant
+                  and the right library in the design software.
+                </div>
+              )}
+              {/^TSV\b/.test(plat.platform) && (
+                <div style={{ marginTop: 8 }}>
+                  TSV implants have a bevel, so a gap often appears between scan body and implant. It's seated if the edges touch.
+                </div>
+              )}
+              {platRefs.length > 0 && (
+                <div style={{ marginTop: 10 }}>
+                  <div style={{ fontWeight: 600, color: C.ink, marginBottom: 6 }}>Reference X-rays from Dandy's guide</div>
+                  <div style={{ display: "flex", gap: 8, overflowX: "auto", paddingBottom: 4 }}>
+                    {platRefs.map((r) => (
+                      <a
+                        key={r.file}
+                        href={`/api/reference/${r.file}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        title={`Open ${r.scan_body || "reference"} full size`}
+                        style={{ flex: "0 0 auto", width: 92, textDecoration: "none", color: C.muted }}
+                      >
+                        <img
+                          src={`/api/reference/${r.file}`}
+                          alt={`${r.scan_body || "Scan body"} on ${plat.platform}`}
+                          loading="lazy"
+                          style={{
+                            width: 92,
+                            height: 120,
+                            objectFit: "cover",
+                            borderRadius: 6,
+                            display: "block",
+                            background: "#000",
+                            border: `2px solid ${family && r.family === family ? C.accent : "transparent"}`,
+                          }}
+                        />
+                        <span style={{ display: "block", fontSize: 11.5, lineHeight: 1.3, marginTop: 4 }}>{r.scan_body || "Unlabelled"}</span>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          {system !== SYSTEMS[0] && !system.startsWith("Straumann") && !plat && (
             <p style={{ fontSize: 12.5, color: C.muted, margin: "8px 0 0", lineHeight: 1.45 }}>
-              Product-specific rules are built in for Straumann only. For this system the check uses general seating criteria, so confirm details against the manufacturer's instructions.
+              Manufacturer-specific rules are built in for Straumann only. Pick the implant platform to compare against Dandy's
+              reference X-rays; otherwise the check uses general seating criteria.
             </p>
           )}
         </div>
@@ -647,6 +803,14 @@ export default function SeatingCheck() {
                     })}
                     <span style={{ fontWeight: 500 }}>{result.confidence}</span>
                   </div>
+                  {CATEGORY[result.dandy_category] && (
+                    <div style={{ margin: "0 0 8px", fontSize: 13, color: C.ink }}>
+                      Dandy category:{" "}
+                      <span style={{ fontWeight: 700, padding: "2px 8px", borderRadius: 6, background: "rgba(255,255,255,0.7)", color: verdict.fg }}>
+                        {CATEGORY[result.dandy_category]}
+                      </span>
+                    </div>
+                  )}
                   <div style={{ color: C.ink, fontSize: 15, lineHeight: 1.5 }}>{result.summary}</div>
                   {result.angulation && result.angulation.rating && (
                     <div style={{ marginTop: 8, fontSize: 13, color: C.ink, display: "flex", gap: 8, alignItems: "baseline", flexWrap: "wrap" }}>
